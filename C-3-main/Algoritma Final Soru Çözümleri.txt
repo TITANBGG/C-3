@@ -1,0 +1,105 @@
+SORU >>> 1!/1 + 2!/2 + ... + n!/n şeklinde kullanıcıdan n değeri parametre olarak alınacak ve seri toplam ekrana yazdırılacak.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int fact(int i)
+{
+	if (i==0)
+		return 1;
+	
+	return i*fact(i-1);
+}
+
+int main()
+{
+	int n;
+	printf("Seri toplami icin n degeri giriniz: ");
+	scanf("%d",&n);
+	int toplam=0;
+	
+	for (int i=1; i<=n; i++)
+	{
+		toplam+=fact(i)/i;
+	}
+	printf("Seri toplami= %d",toplam);
+	
+	return 0;
+}
+
+
+-----------------------------------------------------------------------------------------
+
+
+SORU >>> 10 kişinin maaşları kullanıcıdan diziye okunacak. Dizi parametre olarak alınacak ve dizideki maaşların zamdan sonraki değerlerini aynı diziye yazdırılacak ve en son zamlı maaşlar
+	   ekrana bastırılacak. ZAM KURALI= maaş 3000 birim ve altı ise %10 + 100 birim zam , 3000 üstü ise %10 zam yapılacak.
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void zam(int dizi[])
+{
+	for (int i=0; i<10; i++)
+	{
+		if (dizi[i]<=3000)
+			dizi[i]=dizi[i]*1.1+100;
+			
+		else 
+			dizi[i]=dizi[i]*1.1;		
+	}
+}
+
+int main()
+{
+	int maaslar[10];
+	
+	printf("Lutfen maaslari giriniz:\n");
+	
+	for (int i=0; i<10; i++)
+	{
+		scanf("%d",&maaslar[i]);
+	}
+	
+	zam(maaslar);
+	
+	printf("Zamli maaslar:\n");
+	
+	for (int k=0; k<10; k++)
+	{
+		printf("%d\n",maaslar[k]);
+	}
+		
+		return 0;
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+SORU >>> Bir binanın temeli ve zemin katının maliyeti toplam 1000 birimdir. Bundan sonra çıkılacak her kat için önceki maliyetin %10'u üzerine 100 birim ekstra maliyet gerektirmektedir.
+	   Kullanıcı tarafından verilen kat sayısına göre toplam maliyeti hesaplanacak programı özyinelemeli fonksiyon kullanarak yazınız.
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int maliyet(int kat)
+{
+	if (kat == 0)
+		return 1000;
+	
+	return maliyet(kat-1)*1.1+100;
+}
+
+int main()
+{	
+	int kat,sonuc;
+	printf("Kac kat cikilacak:");
+	scanf("%d",&kat);
+	
+	sonuc=maliyet(kat);
+	
+	printf("%d kat icin toplam maliyet = %d",kat,sonuc);
+	
+	return 0;
+}	

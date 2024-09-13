@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int urunfiyat(int x[25])
+{
+	int i;
+	for(i=0;i<25;i++)
+	{
+		printf("ürün fiyatını gir: %d",i+1);
+		scanf("%d",&x[i]);
+	}
+	for(i=0;i<25;i++)
+	{
+		if(x[i]<=20)
+		{
+			x[i]=x[i]*1.05;
+			
+	}
+	else if(x[i]>20)	
+	{
+		x[i]=x[i]*1.15;
+		
+	}
+	int main()
+	{
+		int i;
+
+         int a[25];
+         urunfiyat(a);
+         for(i=0;i<25;i++)
+         {
+         	printf("\n\n %d",a[i]);
+		 }
+		 }
+	
+	}
+	
+	
+	
+	return 25;
+}

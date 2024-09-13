@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+
+int main() {
+	
+	int dizi[5]={2,5,3,4,6}; // "dizi[0]=2,dizi[1]=5,dizi[2]=3,dizi[3]=4,dizi[4]=6"
+	
+	int i;
+	
+	for(i=0;i<5;i++){
+		
+		if(i%2==0){ // ilk deger olan "0" verildi 0 mod 2 = 0'dir. // 
+			dizi[i]+=dizi[i+1]++; // ("dizi[i]+=dizi[i+1]++" demek aslinda "dizi[i]=dizi[i]+dizi[i+1]++" demektir.) // dizi[2]=2+4=6 / dizi[3] = 5 olarak kullanılır artık
+			                      // "0" degerini yerine koyalim "dizi[0]=dizi[0]+dizi[1]++" bu bize derki bir daha dizi[1] gorursen dizi[1]'e "1" ekle
+								  //                             "dizi[0]  =  2    +  5++"  yani "dizi[0]=7'dir. dizi[1]=6
+		}
+		else{
+			dizi[i]+=--dizi[i+1]; // 1 buraya girer dizi[1]=dizi[1]+(--dizi[2])= 6 +2     dizi[2]=2 // 3 burya girer  dizi[3]=5+5=10 // dizi[4]=5
+		}
+    }
+	for(i=0;i<5;i++){
+		printf("%d\n",dizi[i]); // ilk olarak "dizi[0] = 7" yazdirir.// ikinci olarak "dizi[1]=8" //üçüüncü olarak "dizi[2]=6" //  dördüncü olarak "dizi[3] =10" // beşinci olarak " dizi[4]=5" dir.
+	}
+
+	return 0;
+}
